@@ -11,5 +11,6 @@ node('24aa0f436fb5') {
   }
   stage('Deploy') {
     sh 'aws s3 cp /workspace/java-pipeline/dist/rectangle-7.jar s3://assignment-10-jar-bucket/rectangle-7.jar'
+  }
 }
 
