@@ -1,6 +1,6 @@
 properties([pipelineTriggers([githubPush()])])
 
-node('Assignment10') {   
+node('24aa0f436fb5') {   
   stage('Unit Tests') {    
     sh 'ant -f test.xml -v'
     junit 'reports/result.xml'
