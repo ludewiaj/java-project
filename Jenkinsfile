@@ -12,5 +12,10 @@ node('24aa0f436fb5') {
   stage('Deploy') {
     sh 'aws s3 cp /workspace/java-pipeline/dist/rectangle-$BUILD_NUMBER.jar s3://assignment-10-jar-bucket/rectangle-$BUILD_NUMBER.jar'
   }
+  stage('Report') {
+    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS Keys', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+      sh 'aws cloudformation describestack-resources --region us-east-1 --stack-name jenkins'
+    }
+  }
 }
 
